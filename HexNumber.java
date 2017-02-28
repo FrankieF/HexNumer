@@ -144,25 +144,25 @@ public class HexNumber {
 		 * if the string is in the acceptable format, we continue
 		 * otherwise throw an exception
 		 */
-        HexNumber.isHex(hexValue);
-        
-        boolean isNegative = false;
-        
-        // Store the characters in the string into a character array for quick access
-        char[] decimals = hexValue.toUpperCase().toCharArray();
-        // The value of our hex number
-        int val = 0;
-        int i = 0;
-        if(decimals[0] == '-') {
-        	i++;
-        	isNegative = true;
-        }
-        for (; i < hexValue.length(); i++) {
-	            char c = decimals[i]; // Get the character in the array
-	            int d = DIGITS.indexOf(c); // Get the hex value of our character 
-	            val = 16*val + d; // Multiple the value * 16 to move over one place to the left, then add our number
-        }        
-        return isNegative ? -val : val;
+		HexNumber.isHex(hexValue);
+
+		boolean isNegative = false;
+
+		// Store the characters in the string into a character array for quick access
+		char[] decimals = hexValue.toUpperCase().toCharArray();
+		// The value of our hex number
+		int val = 0;
+		int i = 0;
+		if(decimals[0] == '-') {
+			i++;
+			isNegative = true;
+		}
+		for (; i < hexValue.length(); i++) {
+			    char c = decimals[i]; // Get the character in the array
+			    int d = DIGITS.indexOf(c); // Get the hex value of our character 
+			    val = 16*val + d; // Multiple the value * 16 to move over one place to the left, then add our number
+		}        
+		return isNegative ? -val : val;
     }
 
 	/**
@@ -171,31 +171,31 @@ public class HexNumber {
 	 * @return a String representation of the deicmalValue in hexadecimal (base 16).
 	 */
     public static String hexValue(long decimalValue) {
-        boolean isNegative = false;
-        if (decimalValue == 0) // the decimalValue is 0 so return 0
-        	return "0";
-        /**
-         * If the number is negative set the negative flag
-         * then make the number positive to convert it
-         */
-        else if (decimalValue < 0) {
-        	isNegative = true;
-        	decimalValue = -decimalValue;
-        }
-        
-        String hexValue = "";
-        /**
-         * Mod the number by 16, then find the digit in our String Digit.
-         * Add that digit to our hexValue, use integer division to
-         * divide the decimalValue by 16.
-         */
-        while (decimalValue > 0) {
-            int digit = (int)(decimalValue % 16);
-            hexValue = DIGITS.charAt(digit) + hexValue;
-            decimalValue /= 16;
-        }
-        // if the number passed in was negative add '-' to the front of the string.
-        return isNegative ?  hexValue = "-" + hexValue :hexValue;
+		boolean isNegative = false;
+		if (decimalValue == 0) // the decimalValue is 0 so return 0
+			return "0";
+		/**
+		 * If the number is negative set the negative flag
+		 * then make the number positive to convert it
+		 */
+		else if (decimalValue < 0) {
+			isNegative = true;
+			decimalValue = -decimalValue;
+		}
+
+		String hexValue = "";
+		/**
+		 * Mod the number by 16, then find the digit in our String Digit.
+		 * Add that digit to our hexValue, use integer division to
+		 * divide the decimalValue by 16.
+		 */
+		while (decimalValue > 0) {
+		    int digit = (int)(decimalValue % 16);
+		    hexValue = DIGITS.charAt(digit) + hexValue;
+		    decimalValue /= 16;
+		}
+		// if the number passed in was negative add '-' to the front of the string.
+		return isNegative ?  hexValue = "-" + hexValue :hexValue;
     }
 	
 }
